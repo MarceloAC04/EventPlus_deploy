@@ -1,0 +1,33 @@
+@font-face {
+  font-family: Poppins-Regular;
+  src: url(./assets/fonts/Poppins/Poppins-Regular.ttf);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins-Regular','Courier New', Courier, monospace;
+  background-color: black;
+}
+
+:root {
+  /* Variáveis de tema */
+  
+  /* smartphone */
+  --color-white: #fff;
+  --color-black: #000;
+  --color-dark-blue: #201849;
+  --color-blue-red: #511948;
+  --color-medium-red: #821B47;
+  --color-red: #B51D44;
+  --color-yellow: #FDE100;
+  --text-color: #000;
+  
+  /* desktop */
+
+}
+
