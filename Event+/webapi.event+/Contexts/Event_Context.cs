@@ -34,7 +34,7 @@ namespace webapi.event_.Contexts
             //  base.OnConfiguring(optionsBuilder);
 
             // string de conexão azure User Id = eventmanhamarcelo-server; Pwd= Senai@134
-            optionsBuilder.UseSqlServer("");
+            optionsBuilder.UseSqlServer("Server=tcp:eventplusmanha-server.database.windows.net,1433;Initial Catalog=eventplusmanha;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;User Id = eventplusdatabase Pwd= Senai@134;");
             base.OnConfiguring(optionsBuilder);
         }
     }

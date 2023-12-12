@@ -1,7 +1,10 @@
-﻿using Microsoft.IdentityModel.Tokens;
+﻿using Microsoft.Azure.CognitiveServices.ContentModerator;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
 using System.Reflection;
+using static System.Net.WebRequestMethods;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -117,6 +120,16 @@ builder.Services.AddCors(options =>
             .AllowAnyMethod();
         });
 });
+
+//Configuração do serviço de moderação de conteúdo - Azure
+//Chave e endpoint obtidos na azure
+builder.Services.AddSingleton(provider => new ContentModeratorClient(
+    new ApiKeyServiceClientCredentials("cda5fc177a1c4af09f176bc7962d1c81"))
+{
+    Endpoint = "https://eventmoderator-marcelo.cognitiveservices.azure.com/"
+}
+);
+
 
 var app = builder.Build();
 
