@@ -16,12 +16,12 @@ export const commentaryEventResource = '/ComentariosEvento'
 
 export const commentaryEventUserIdResource = '/ComentariosEvento/BuscarPorIdUsuario'
 
-const apiPort = '7118'
-const localApiUrl = `https://localhost:${apiPort}/api`
-const externaApiUrl = null;
+// const apiPort = '7118'
+// const localApiUrl = `https://localhost:${apiPort}/api`
+const externaApiUrl = 'https://eventplusmanha-marcelo.azurewebsites.net/api'
 
 const api = axios.create({
-    baseURL: localApiUrl
+    baseURL: externaApiUrl
 })
 
 export default api;

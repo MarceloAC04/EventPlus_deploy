@@ -4,6 +4,7 @@ import { Route, BrowserRouter, Routes } from "react-router-dom";
 import HomePage from "../pages/HomePage/HomePage";
 import TipoEventosPage from "../pages/TipoEventosPage/TipoEventosPage";
 import EventosAlunoPage from "../pages/EventosAlunosPage/EventosAlunosPage";
+import DetalhesEventosPage from "../pages/DetalhesEventosPage/DetalhesEventosPage";
 import EventosPage from "../pages/EventosPage/EventosPage";
 import LoginPage from "../pages/LoginPage/LoginPage";
 import Header from "../componentes/Header/Header";
@@ -17,6 +18,8 @@ const Rotas = () => {
 
       <Routes>
         <Route element={<HomePage />} path={"/"} exact />
+
+        <Route element={<DetalhesEventosPage />} path={"/detalhes"} exact />
 
         <Route 
         path={"/eventos"}
