@@ -29,7 +29,7 @@ const EventosPage = () => {
   const [showSpinner, setShowSpinner] = useState(false); // componente notification
   const [notifyUser, setNotifyUser] = useState(); // componente notification
 
-  const instituicaoId = "3fa85f64-5717-4562-b3fc-2c963f66afa6";
+  const instituicaoId = "bb107145-cffb-48be-a7a8-2bca3c62f987";
 
     async function loadEventsType() {
       try {

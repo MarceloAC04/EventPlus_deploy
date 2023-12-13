@@ -7,11 +7,13 @@ import ContactSection from "../../componentes/ContactSection/ContactSection";
 import MainContent from "../../componentes/MainContent/MainContent";
 import VisionSection from "../../componentes/VisionSection/VisionSection";
 import Titulo from "../../componentes/Titulo/Titulo";
-import api from "../../Services/Service";
+import api, { previousEventResource } from "../../Services/Service";
 import { nextEventResource } from "../../Services/Service";
+import PreviousEvent from "../../componentes/PreviousEvent/PreviousEvent";
 
 const HomePage = () => {
   const [nextEvents, setNextEvents] = useState([]); 
+  const [previousEvents, setPreviousEvents] = useState([]); 
 
   useEffect(()=> {
     async function  getNextEvents() {
@@ -24,7 +26,19 @@ const HomePage = () => {
         alert("Deu ruim na api!")
       }   
     }
+
+    async function getPreviousEvents() {
+      try {
+        const promise = await api.get(previousEventResource)
+        const dados = await promise.data;
+
+        setPreviousEvents(dados);
+      } catch (error) {
+        alert("Deu ruim na api!")
+      }
+    }
      getNextEvents(); //roda a função
+     getPreviousEvents();
   }, [])
 
 
@@ -48,6 +62,28 @@ const HomePage = () => {
               description={e.descricao}
               eventDate={e.dataEvento}
               idEvent={e.idEvento}
+              />
+              );
+            })
+           }
+
+          </div>
+        </Container>
+        
+        <Container>
+          <Titulo titleText={"Eventos Anteriores"} color="#fde100" />
+
+          <div className="events-box">
+
+           {
+            previousEvents.map((p) => {
+              return (
+              <PreviousEvent
+              key={p.idEvento}
+              title={p.nomeEvento}
+              description={p.descricao}
+              eventDate={p.dataEvento}
+              idEvent={p.idEvento}
               />
               );
             })

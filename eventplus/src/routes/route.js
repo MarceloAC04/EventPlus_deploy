@@ -32,8 +32,7 @@ const Rotas = () => {
         element={
           <PrivateRoute redirectTo="/"> 
             <DetalhesEventosPage />
-          </PrivateRoute>
-      }  
+          </PrivateRoute>}
       />
 
         <Route 
