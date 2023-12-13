@@ -19,7 +19,7 @@ const Rotas = () => {
       <Routes>
         <Route element={<HomePage />} path={"/"} exact />
 
-        <Route element={<DetalhesEventosPage />} path={"/detalhes"} exact />
+        <Route element={<DetalhesEventosPage />} path={"/detalhes"}/>
 
         <Route 
         path={"/eventos"}
