@@ -19,13 +19,19 @@ const Rotas = () => {
       <Routes>
         <Route element={<HomePage />} path={"/"} exact />
 
-        <Route element={<DetalhesEventosPage />} path={"/detalhes"}/>
-
         <Route 
         path={"/eventos"}
         element={
           <PrivateRoute redirectTo="/"> 
             <EventosPage />
+          </PrivateRoute>
+      }  
+      />
+        <Route 
+        path={"/detalhe-evento"}
+        element={
+          <PrivateRoute redirectTo="/"> 
+            <DetalhesEventosPage />
           </PrivateRoute>
       }  
       />
