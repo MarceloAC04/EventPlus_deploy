@@ -110,6 +110,10 @@ const EventosAlunoPage = () => {
 
   async function postMyCommentary(commentary) {
     try {
+      if (commentary.trim().length < 3) {
+        notifyWarning("O comentário dever ter ao menos 3 caracteres");
+        return;
+      }
       const promise = await api.post(commentaryEventResourceIa, {
         descricao: commentary,
         exibe: true,
@@ -120,7 +124,6 @@ const EventosAlunoPage = () => {
         notify("Comentario feito!");
         showHideModal(false);
       }
-      console.log(userData.id, userData.idEvento);
     } catch (error) {
       notifyDanger("Erro ao cadastrar");
     }
@@ -142,7 +145,6 @@ const EventosAlunoPage = () => {
       }
     } catch (error) {
       notifyDanger("Error ao deletar!");
-      console.clear();
     }
   }
 

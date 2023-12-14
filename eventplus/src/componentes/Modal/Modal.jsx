@@ -23,10 +23,6 @@ const Modal = ({
   const [myComentario, setMyComentario] = useState("");
   const [haveCommentary, setHaveCommentary] = useState(false);
   const [commentary, setCommentary] = useState("");
-  console.clear()
-  console.log(userData);
-  console.log(idComentario);
- 
 
    useEffect(() =>
    {
