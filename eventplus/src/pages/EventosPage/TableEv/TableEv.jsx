@@ -1,12 +1,14 @@
 import React from "react";
-import { dateFormatDbToView } from "../../../Utils/stringFunctions"
+import { dateFormatDbToView } from "../../../Utils/stringFunctions";
 import { Tooltip } from "react-tooltip";
+import { Link } from "react-router-dom";
 import "./TableEv.css";
 
 import editPen from "../../../assets/images/edit-pen.svg";
 import trashDelete from "../../../assets/images/trash-delete.svg";
+import comentaryIcon from "../../../assets/images/comentary-icon.svg";
 
-const TableEv = ({ dados, fnDelete = null, fnUpdate = null}) => {
+const TableEv = ({ dados, fnDelete = null, fnUpdate = null }) => {
   return (
     <table className="table-data">
       <thead className="table-data__head">
@@ -29,6 +31,9 @@ const TableEv = ({ dados, fnDelete = null, fnUpdate = null}) => {
           <th className="table-data__head-title table-data__head-title--little">
             Deletar
           </th>
+          <th className="table-data__head-title table-data__head-title--little">
+            Detalhes
+          </th>
         </tr>
       </thead>
 
@@ -40,37 +45,50 @@ const TableEv = ({ dados, fnDelete = null, fnUpdate = null}) => {
                 {ev.nomeEvento}
               </td>
 
-              <td className="table-data__data table-data__data--big"
-              data-tooltip-id={ev.idEvento}
-              data-tooltip-content={ev.descricao}
-              data-tooltip-place="top"
+              <td
+                className="table-data__data table-data__data--big"
+                data-tooltip-id={ev.idEvento}
+                data-tooltip-content={ev.descricao}
+                data-tooltip-place="top"
               >
-              <Tooltip id={ev.idEvento} className="tooltip"  />
-                {ev.descricao.substr(0,15)}
+                <Tooltip id={ev.idEvento} className="tooltip" />
+                {ev.descricao.substr(0, 15)}
               </td>
               <td className="table-data__data table-data__data--big">
                 {ev.tiposEvento.titulo}
               </td>
               <td className="table-data__data table-data__data--big">
-              {dateFormatDbToView(ev.dataEvento)}
+                {dateFormatDbToView(ev.dataEvento)}
               </td>
 
               <td className="table-data__data table-data__data--little">
-                <img className="table-data__icon" 
-                    src={editPen} alt="" 
-                    onClick={() => {
-                      fnUpdate(ev.idEvento)
-                    }}
+                <img
+                  className="table-data__icon"
+                  src={editPen}
+                  alt=""
+                  onClick={() => {
+                    fnUpdate(ev.idEvento);
+                  }}
                 />
               </td>
 
               <td className="table-data__data table-data__data--little">
-                <img 
-                     className="table-data__icon" 
-                     src={trashDelete} alt="" 
-                     onClick={() => {
-                      fnDelete(ev.idEvento)}} 
+                <img
+                  className="table-data__icon"
+                  src={trashDelete}
+                  alt=""
+                  onClick={() => {
+                    fnDelete(ev.idEvento);
+                  }}
                 />
+              </td>
+              <td className="table-data__data table-data__data--little">
+                <Link
+                  className="event-card__connect-link"
+                  to={`/detalhe-evento/${ev.idEvento}`}
+                >
+                <img className="table-data__icon" src={comentaryIcon} alt="" />
+                </Link>
               </td>
             </tr>
           );

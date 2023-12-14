@@ -16,6 +16,8 @@ export const presenceEventResource = '/PresencaEvento'
 
 export const commentaryEventResource = '/ComentariosEvento'
 
+export const commentaryEventResourceIa = '/ComentariosEvento/Comentario'
+
 export const commentaryEventUserIdResource = '/ComentariosEvento/BuscarPorIdUsuario'
 
 // const apiPort = '7118'

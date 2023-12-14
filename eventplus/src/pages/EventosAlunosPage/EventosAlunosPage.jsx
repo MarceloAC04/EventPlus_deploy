@@ -10,6 +10,7 @@ import Modal from "../../componentes/Modal/Modal";
 import api, {
   commentaryEventResource,
   commentaryEventUserIdResource,
+  commentaryEventResourceIa,
   eventResource,
   myEventsResource,
   presenceEventResource,
@@ -109,7 +110,7 @@ const EventosAlunoPage = () => {
 
   async function postMyCommentary(commentary) {
     try {
-      const promise = await api.post(commentaryEventResource, {
+      const promise = await api.post(commentaryEventResourceIa, {
         descricao: commentary,
         exibe: true,
         idUsuario: userData.id,
@@ -218,7 +219,7 @@ const EventosAlunoPage = () => {
           <Container>
             <Titulo
               titleText={"Eventos"}
-              potatoClass="custom-title"
+              textClass="custom-title"
               color="black"
             />
 
