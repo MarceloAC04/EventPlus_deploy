@@ -67,12 +67,12 @@ namespace webapi.event_.Controllers
             }
         }
 
-        [HttpGet("ListarSomenteExibe")]
-        public IActionResult GetTrue()
+        [HttpGet("ListarSomenteExibe/{id}")]
+        public IActionResult GetTrue(Guid id)
         {
             try
             {
-                return Ok(_comentariosEventoRepository.ListarSomenteExibe());
+                return Ok(_comentariosEventoRepository.ListarSomenteExibe(id));
             }
             catch (Exception e)
             {
@@ -80,12 +80,12 @@ namespace webapi.event_.Controllers
             }
         }
 
-        [HttpGet]
-        public IActionResult Get()
+        [HttpGet("ListarTodos/{id}")]
+        public IActionResult Get(Guid id)
         {
             try
             {
-                return Ok(_comentariosEventoRepository.Listar());
+                return Ok(_comentariosEventoRepository.Listar(id));
             }
             catch (Exception e)
             {
