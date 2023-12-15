@@ -58,23 +58,33 @@ const Table = ({ dados, fnConnect = null, fnShowModal = null }) => {
               </td>
 
               <td className="tbal-data__data tbal-data__data--big tbal-data__btn-actions">
-                <img
-                  className="tbal-data__icon"
-                  idevento={e.idEvento}
-                  src={comentaryIcon}
-                  alt=""
-                  onClick={() => {fnShowModal(e.idEvento)}}
-                />
-
+                {new Date(e.dataEvento) < Date.now() ?
+                  <img
+                    className="tbal-data__icon"
+                    idevento={e.idEvento}
+                    src={comentaryIcon}
+                    alt=""
+                    onClick={() => {
+                      fnShowModal(e.idEvento);
+                    }}
+                  />
+                  :
+                  null
+                }
                 <ToggleSwitch
                   toggleActive={e.situacao}
-                  manipulationFunction={() => {
+                  manipulationFunction={
+                    new Date(e.dataEvento) > Date.now() ?
+                    () => {
                     fnConnect(
-                      e.idEvento, 
+                      e.idEvento,
                       e.situacao ? "unnconnect" : "connect",
                       e.idPresencaEvento
-                      );
-                  }}
+                    );
+                  }
+                : () =>
+                {alert("Evento não está mais disponível!")}
+              }
                 />
               </td>
             </tr>

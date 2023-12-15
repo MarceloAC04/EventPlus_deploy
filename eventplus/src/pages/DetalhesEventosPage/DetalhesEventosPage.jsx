@@ -39,6 +39,7 @@ const DetalhesEventosPage = () => {
             <Titulo
               titleText={"Detalhe-Eventos"}
               color="black"
+              textClass="detalhe-title"
             />
             <TableDe dados={comentarios} />
           </Container>

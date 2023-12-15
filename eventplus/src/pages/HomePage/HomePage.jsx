@@ -71,7 +71,7 @@ const HomePage = () => {
         </Container>
         
         <Container>
-          <Titulo titleText={"Eventos Anteriores"} color="#fde100" />
+          <Titulo titleText={"Eventos Anteriores"} textClass={"previousText"} color="#fde100" />
 
           <div className="events-box">
 

@@ -14,39 +14,37 @@ const Modal = ({
   fnGet = null,
   showHideModal = false,
   fnDelete = null,
-  fnPost = null
-
+  fnPost = null,
 }) => {
-
-  const {userData} = useContext(UserContex);
+  const { userData } = useContext(UserContex);
   const [idComentario, setIdComentario] = useState("");
   const [myComentario, setMyComentario] = useState("");
   const [haveCommentary, setHaveCommentary] = useState(false);
   const [commentary, setCommentary] = useState("");
 
-   useEffect(() =>
-   {
-     async function loadCommentary() {
-       const getCommentary = await fnGet(userData.id, userData.idEvento);
+  useEffect(() => {
+    async function loadCommentary() {
+      const getCommentary = await fnGet(userData.id, userData.idEvento);
 
-       setMyComentario(getCommentary.descricao);
-       setIdComentario(getCommentary.idComentarioEvento);
-       if (getCommentary.descricao) {
+      setMyComentario(getCommentary.descricao);
+      setIdComentario(getCommentary.idComentarioEvento);
+      if (getCommentary.descricao) {
         setHaveCommentary(true);
       } else {
         setHaveCommentary(false);
       }
-     }
-     loadCommentary();
-   },[])
+    }
+    loadCommentary();
+  }, []);
 
   return (
     <div className="modal">
       <article className="modal__box">
-        
         <h3 className="modal__title">
           {modalTitle}
-          <span onClick={()=> showHideModal(true)} className="modal__close">X</span>
+          <span onClick={() => showHideModal(true)} className="modal__close">
+            X
+          </span>
         </h3>
 
         <div className="comentary">
@@ -56,31 +54,33 @@ const Modal = ({
             className="comentary__icon-delete"
             alt="Ícone de uma lixeira"
             onClick={() => {
-              fnDelete(idComentario)
+              fnDelete(idComentario);
             }}
           />
-          <p className="comentary__text"
-          >{haveCommentary ? myComentario : comentaryText}</p>
+          <p className="comentary__text">
+            {haveCommentary ? myComentario : comentaryText}
+          </p>
 
           <hr className="comentary__separator" />
         </div>
 
         <Input
-          placeholder="Escreva seu comentário..."
+          placeholder={haveCommentary ? "Comentário já feito" : "Escreva seu comentário..."}
           additionalClass="comentary__entry"
           value={commentary}
           manipulationFunction={(e) => {
             setCommentary(e.target.value);
           }}
         />
-
-        <Button
-          textButton="Comentar"
-          additionalClass="comentary__button"
-          manipulationFunction={() => {
-            fnPost(commentary)
-          }}
-        />
+        {!haveCommentary ? (
+          <Button
+            textButton="Comentar"
+            additionalClass="comentary__button"
+            manipulationFunction={() => {
+              fnPost(commentary);
+            }}
+          />
+        ) : ""}
       </article>
     </div>
   );
